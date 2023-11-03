@@ -34,7 +34,7 @@ limitations under the License.
 //#include "pic/pic_person2.h"
 //#include "pic/pic_person3.h"
 
-char* labels[CLASS_NUM] = {"no-person", "person"};
+static char* labels[CLASS_NUM] = {"no-person", "person"};
 
 static tm_err_t layer_cb(tm_mdl_t* mdl, tml_head_t* lh)
 {   //dump middle result

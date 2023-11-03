@@ -34,7 +34,7 @@ limitations under the License.
 //#include "pic/pic8.h"
 
 
-char* labels[CLASS_NUM] = {\
+static char* labels[CLASS_NUM] = {\
     "airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "hrose", "ship", "truck"};
 
 static tm_err_t layer_cb(tm_mdl_t* mdl, tml_head_t* lh)
