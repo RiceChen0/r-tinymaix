@@ -17,15 +17,15 @@ CPPPATH += [cwd + '/include']
 
 if GetDepend(['R_TINYMAIX_USING_CIFAR10_SAMPLE']):
     src += ['examples/cifar10/cifar10.c']
-
-if GetDepend(['R_TINYMAIX_USING_MBNET_SAMPLE']):
-    src += ['examples/mbnet/mbnet.c']
+    CPPPATH += [cwd + '/examples/cifar10']
 
 if GetDepend(['R_TINYMAIX_USING_MNIST_SAMPLE']):
     src += ['examples/mnist/mnist.c']
+    CPPPATH += [cwd + '/examples/mnist']
 
 if GetDepend(['R_TINYMAIX_USING_VWW_SAMPLE']):
     src += ['examples/vww/vww.c']
+    CPPPATH += [cwd + '/examples/vww']
 
 LOCAL_CFLAGS = '--gnu'
 

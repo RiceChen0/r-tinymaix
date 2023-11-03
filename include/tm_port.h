@@ -50,19 +50,19 @@ limitations under the License.
 #define TM_DBGL()                   TM_PRINTF("###L%d\n",__LINE__);
 
 /******************************* DBG TIME CONFIG  ************************************/
-#define  TM_GET_MS()                rt_tick_get_millisecond();
+#define  TM_GET_US()                rt_tick_get_millisecond();
 
 #define TM_DBGT_INIT()              uint32_t _start,_finish;\
                                     float _time;\
-                                    _start = TM_GET_MS();
+                                    _start = TM_GET_US();
 
-#define TM_DBGT_START()             _start = TM_GET_MS();
+#define TM_DBGT_START()             _start = TM_GET_US();
 
 #define TM_DBGT(x)                  {\
-                                        _finish=TM_GET_MS();\
-                                        _time = (float)(_finish-_start) / 1.0;\
+                                        _finish=TM_GET_US();\
+                                        _time = (float)(_finish-_start) / 1000.0;\
                                         TM_PRINTF("===%s use %.3f ms\n", (x), _time);\
-                                        _start=TM_GET_MS();\
+                                        _start=TM_GET_US();\
                                     }
 
 /******************************* DBG PERFORMANCE CONFIG  ************************************/

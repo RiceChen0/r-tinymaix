@@ -137,7 +137,7 @@ static void parse_output(tm_mat_t* outs)
     return;
 }
 
-int main(int argc, char** argv)
+int mnist(int argc, char** argv)
 {   TM_DBGT_INIT();
     TM_PRINTF("mnist demo\n");
     tm_mdl_t mdl;
@@ -172,3 +172,4 @@ int main(int argc, char** argv)
     tm_unload(&mdl);                 
     return 0;
 }
+MSH_CMD_EXPORT(mnist, TinyMaix mnist example);
