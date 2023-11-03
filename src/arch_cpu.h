@@ -98,17 +98,17 @@ TM_INLINE void tm_dot_prod(mtype_t* sptr, mtype_t* kptr,uint32_t size, sumtype_t
         float _s = tm_fp8to32(sptr[i]);
         float _k = tm_fp8to32(kptr[i]);
         sum += _s*_k;
-        //printf("%.3f*%.3f+",_s,_k);
+        //TM_PRINTF("%.3f*%.3f+",_s,_k);
     }
-    //printf("\r\n");
+    //TM_PRINTF("\r\n");
     *result = sum;
     return;
 }
 
 TM_INLINE void tm_postprocess_sum(sumtype_t sum, btype_t b, int act, mtype_t* outp, \
     sctype_t scale, sctype_t out_s, zptype_t out_zp)
-{   //printf("sum=%.6f,", sum);
-    sum += tm_fp8to32(b); //printf("%.6f,", sum);
+{   //TM_PRINTF("sum=%.6f,", sum);
+    sum += tm_fp8to32(b); //TM_PRINTF("%.6f,", sum);
     switch(act){    //activation func
     case TM_ACT_RELU:
         sum = sum>0?sum:0;
@@ -120,9 +120,9 @@ TM_INLINE void tm_postprocess_sum(sumtype_t sum, btype_t b, int act, mtype_t* ou
     default:
         break;
     }
-    //printf("%.6f,", sum);
+    //TM_PRINTF("%.6f,", sum);
     *outp = tm_fp32to8(sum);
-    //printf("  %02x,%.6f\r\n", *outp, tm_fp8to32(*outp));
+    //TM_PRINTF("  %02x,%.6f\r\n", *outp, tm_fp8to32(*outp));
     return;
 }
 

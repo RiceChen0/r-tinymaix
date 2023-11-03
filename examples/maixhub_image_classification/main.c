@@ -68,7 +68,7 @@ static void parse_output(tm_mat_t* outs, int class_num)
     float maxp = -1;
     int maxi = -1;
     for(int i=0; i<class_num; i++){
-        printf("%d: %.3f\n", i, data[i]);
+        TM_PRINTF("%d: %.3f\n", i, data[i]);
         if(data[i] > maxp) {
             maxi = i;
             maxp = data[i];
@@ -86,13 +86,13 @@ void maixhub_image_preprocess_quantize(tm_mdl_t* mdl, uint8_t *img_data, int w, 
     sctype_t in_s = l0h->in_s;
     zptype_t in_zp= l0h->in_zp;
 
-    printf("scale: %f, zero point: %d\n", in_s, in_zp);
-    printf("first 3 pixels original value: ");
+    TM_PRINTF("scale: %f, zero point: %d\n", in_s, in_zp);
+    TM_PRINTF("first 3 pixels original value: ");
     for(int i=0; i<9; ++i)
     {
-        printf("%d ", img_data[i]);
+        TM_PRINTF("%d ", img_data[i]);
     }
-    printf("\n");
+    TM_PRINTF("\n");
     for(int i = 0; i < h * w; ++i)
     {
         #if TM_MDL_TYPE == TM_MDL_INT8
@@ -111,12 +111,12 @@ void maixhub_image_preprocess_quantize(tm_mdl_t* mdl, uint8_t *img_data, int w, 
             *quant_p++ = ((float)*p++ - mean) / std;
         #endif
     }
-    printf("first 3 pixels quantized value: ");
+    TM_PRINTF("first 3 pixels quantized value: ");
     for(int i=0; i<9; ++i)
     {
-        printf("%d ", quantized_data[i]);
+        TM_PRINTF("%d ", quantized_data[i]);
     }
-    printf("\n");
+    TM_PRINTF("\n");
 }
 
 

@@ -169,7 +169,7 @@ static uint8_t mdl_buf[MDL_BUF_LEN];
 
 void setup() {
     Serial.begin(115200);
-    //printf_begin();
+    //TM_PRINTF_begin();
     TM_DBGT_INIT();
     Serial.print("mnist demo\n");
     tm_mdl_t mdl;

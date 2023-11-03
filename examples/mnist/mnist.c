@@ -127,7 +127,7 @@ static void parse_output(tm_mat_t* outs)
     float maxp = 0;
     int maxi = -1;
     for(int i=0; i<10; i++){
-        printf("%d: %.3f\n", i, data[i]);
+        TM_PRINTF("%d: %.3f\n", i, data[i]);
         if(data[i] > maxp) {
             maxi = i;
             maxp = data[i];

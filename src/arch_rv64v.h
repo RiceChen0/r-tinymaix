@@ -77,7 +77,7 @@ TM_INLINE  void tm_dot_prod(mtype_t* sptr, mtype_t* kptr,uint32_t size, sumtype_
 
     *result = sum;
     //__ASM volatile("csrr %0, mcycle" : "=r"(t1));
-    //printf("size=%3d, dt=%ld\r\n", size, t1-t0);
+    //TM_PRINTF("size=%3d, dt=%ld\r\n", size, t1-t0);
     //tdot+=(t1-t0);
     return;
 }

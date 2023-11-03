@@ -25,7 +25,7 @@ uint8_t tm_fp32to8(float fp32)
     int32_t fp32_s = data>>31;
     int32_t fp32_e = (data>>23)&0x0ff;
     int32_t fp32_m = (data&0x07fffff);
-    //printf("fp32 %.6f, s.e.m=%d, %d, %d",fp32, fp32_s, fp32_e, fp32_m);
+    //TM_PRINTF("fp32 %.6f, s.e.m=%d, %d, %d",fp32, fp32_s, fp32_e, fp32_m);
     uint8_t fp8_s = fp32_s;
     int8_t fp8_e = fp32_e-127+TM_FP8_BIAS;
     uint8_t fp8_m = ((fp32_m>>(22-TM_FP8_MCNT))+1)>>1;
@@ -36,7 +36,7 @@ uint8_t tm_fp32to8(float fp32)
     if(fp8_e > (1<<TM_FP8_ECNT)-1) fp8_e = (1<<TM_FP8_ECNT)-1;
     else if(fp8_e < 0) fp8_e = 0;
     uint8_t fp8 = (fp8_s<<7)|(fp8_e<<TM_FP8_MCNT)|fp8_m;
-    //printf("fp8 0x%x, s.e.m=%d, %d, %d",fp8, fp8_s, fp8_e, fp8_m);
+    //TM_PRINTF("fp8 0x%x, s.e.m=%d, %d, %d",fp8, fp8_s, fp8_e, fp8_m);
     return fp8;
 }
 
@@ -45,7 +45,7 @@ float tm_fp8to32(uint8_t fp8)
     uint8_t fp8_s = fp8>>7;
     uint8_t fp8_e = (fp8&0x7f)>>TM_FP8_MCNT;
     uint8_t fp8_m = fp8&((1<<TM_FP8_MCNT)-1);
-    //printf("fp8 0x02x, s.e.m=%d, %d, %d",fp8, fp8_s, fp8_e, fp8_m);
+    //TM_PRINTF("fp8 0x02x, s.e.m=%d, %d, %d",fp8, fp8_s, fp8_e, fp8_m);
     uint32_t fp32_s = fp8_s;
     uint32_t fp32_e = (uint32_t)((int32_t)fp8_e-TM_FP8_BIAS+127);
     uint32_t fp32_m = fp8_m<<(23-TM_FP8_MCNT);
@@ -108,11 +108,11 @@ tm_err_t tml_fc(tm_mat_t* in, tm_mat_t* out,  wtype_t* w, btype_t* b, \
     for(int c=0; c <out->c; c++){
         sumtype_t sum = 0;
         tm_dot_prod(data, w+c*in->c, in->c, &sum);
-        //printf("sum=%.6f\r\n", sum);
+        //TM_PRINTF("sum=%.6f\r\n", sum);
         sum += tm_fp8to32(b[c]);   
-        //printf("sum+b=%.6f\r\n", sum);
+        //TM_PRINTF("sum+b=%.6f\r\n", sum);
         out->data[c] = tm_fp32to8(sum);
-        //printf("sum=0x%02x, %.6f\r\n", out->data[c], tm_fp8to32(out->data[c]));
+        //TM_PRINTF("sum=0x%02x, %.6f\r\n", out->data[c], tm_fp8to32(out->data[c]));
     }
     return TM_OK;
 }

@@ -518,7 +518,7 @@ TM_INLINE tm_err_t l_tml_dwconv2d_3x3_nostride(tm_mat_t* in, tm_mat_t* out, wtyp
                     tm_postprocess_sum(1, &sum1, b + c, act, outp+1*cho, SUMSCALE, OUTSCALE, out_zp); 
                     tm_postprocess_sum(1, &sum2, b + c, act, outp+(out->w+0)*cho, SUMSCALE, OUTSCALE, out_zp); 
                     tm_postprocess_sum(1, &sum3, b + c, act, outp+(out->w+1)*cho, SUMSCALE, OUTSCALE, out_zp); 
-                    //printf("==%.1f,%.1f,%.1f,%.1f\r\n", out->data[0], out->data[1], out->data[2], out->data[3]);
+                    //TM_PRINTF("==%.1f,%.1f,%.1f,%.1f\r\n", out->data[0], out->data[1], out->data[2], out->data[3]);
                     sptr += maxk_blk; //dwconv need move step
                     outp++;
                 }
