@@ -73,7 +73,7 @@ static void parse_output(tm_mat_t* outs)
     float maxp = 0;
     int maxi = -1;
     for(int i=0; i<CLASS_NUM; i++){
-        printf("%d: %.3f\n", i, data[i]);
+        ("%d: %.3f\n", i, data[i]);
         if(data[i] > maxp) {
             maxi = i;
             maxp = data[i];
@@ -83,7 +83,7 @@ static void parse_output(tm_mat_t* outs)
     return;
 }
 
-int main(int argc, char** argv)
+int cifar10(int argc, char** argv)
 {   TM_DBGT_INIT();
     TM_PRINTF("cifar10 demo\n");
     tm_mdl_t mdl;
@@ -113,3 +113,5 @@ int main(int argc, char** argv)
     tm_unload(&mdl);                 
     return 0;
 }
+MSH_CMD_EXPORT(cifar10, TinyMaix cifar10 example);
+
