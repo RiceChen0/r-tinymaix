@@ -2,6 +2,7 @@ from building import *
 import os
 
 cwd = GetCurrentDir()
+LOCAL_CFLAGS = ''
 CPPPATH = []
 
 src = Split('''
@@ -27,7 +28,8 @@ if GetDepend(['R_TINYMAIX_USING_VWW_SAMPLE']):
     src += ['examples/vww/vww.c']
     CPPPATH += [cwd + '/examples/vww']
 
-LOCAL_CFLAGS = '--gnu'
+if rtconfig.PLATFORM == 'armcc':
+    LOCAL_CFLAGS = '--gnu'
 
 group = DefineGroup('r-tinymaix', src, depend = [''], CPPPATH = CPPPATH, LOCAL_CFLAGS = LOCAL_CFLAGS)
 Return('group')
